@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chapitre{% endblock %}
+
+{% block body %}
+    <h1>Chapitre</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chapitre.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ chapitre.title }}</td>
+            </tr>
+            <tr>
+                <th>Sous_titre</th>
+                <td>{{ chapitre.sousTitre }}</td>
+            </tr>
+            <tr>
+                <th>Detail</th>
+                <td>{{ chapitre.detail }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ chapitre.date ? chapitre.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chapitre_index') }}">back to list</a>
+
+    <a href="{{ path('app_chapitre_edit', {'id': chapitre.id}) }}">edit</a>
+
+    {{ include('chapitre/_delete_form.html.twig') }}
+{% endblock %}
