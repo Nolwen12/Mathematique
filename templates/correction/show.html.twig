@@ -16,12 +16,8 @@
                 <td>{{ correction.name }}</td>
             </tr>
             <tr>
-                <th>Question</th>
-                <td>{{ correction.question }}</td>
-            </tr>
-            <tr>
                 <th>Contenue</th>
-                <td>{{ correction.contenue }}</td>
+                <td><a href="{{ asset('uploads/Contenue/' ~ correction.Contenue) }}">Voir la correction</a></td>
             </tr>
             <tr>
                 <th>Date</th>

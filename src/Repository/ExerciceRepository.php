@@ -16,6 +16,26 @@ class ExerciceRepository extends ServiceEntityRepository
         parent::__construct($registry, Exercice::class);
     }
 
+    public function findByChapitre($chapitreId): mixed
+    {
+        return $this->createQueryBuilder('e')
+            ->leftJoin('e.chapitre', 'c')
+            ->where('e.id = :chapitreId')
+            ->setParameter('chapitreId', $chapitreId)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByExercice($exerciceId): mixed
+    {
+        return $this->createQueryBuilder('e')
+            ->leftJoin('e.correction', 'c')
+            ->where('e.id = :correctionId')
+            ->setParameter('correctionId', $exerciceId)
+            ->getQuery()
+            ->getResult();
+    }
+    
     //    /**
     //     * @return Exercice[] Returns an array of Exercice objects
     //     */

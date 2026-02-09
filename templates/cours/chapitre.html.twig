@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chapitre{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    {% include 'header.html.twig' %}
+    <h1> {{chapitre.title}} </h1>
+    <a href="{{ asset('uploads/Contenue/' ~ chapitre.Contenue) }}">Voir le chapitre</a>
+    {% for ex in exercice%}
+         <a href="{{ path('app_cours_exercice_show', {'id': ex.id}) }}">Voir l'exercice</a> 
+        <a href="{{path('app_cours_correction_show', {'id' : ex.correction.id})}}">Voir la correction</a>
+    {% endfor %}
+       
+
+</div>
+{% endblock %}

@@ -2,32 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Chapitre;
+use App\Entity\Cours;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Chapitre>
+ * @extends ServiceEntityRepository<Cours>
  */
-class ChapitreRepository extends ServiceEntityRepository
+class CoursRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Chapitre::class);
+        parent::__construct($registry, Cours::class);
     }
 
-      public function findByCategorie($categorieId): mixed
-      {
-        return $this->createQueryBuilder('a')
-            ->leftJoin('a.categorie', 'c')
-            ->where('c.id = :categorieId')
-            ->setParameter('categorieId', $categorieId)
-            ->getQuery()
-            ->getResult();
-      }
-
     //    /**
-    //     * @return Chapitre[] Returns an array of Chapitre objects
+    //     * @return Cours[] Returns an array of Cours objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -41,7 +31,7 @@ class ChapitreRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Chapitre
+    //    public function findOneBySomeField($value): ?Cours
     //    {
     //        return $this->createQueryBuilder('c')
     //            ->andWhere('c.exampleField = :val')

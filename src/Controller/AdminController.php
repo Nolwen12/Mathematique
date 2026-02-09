@@ -10,10 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[Route('/admin')]
 final class AdminController extends AbstractController
 {
+    public function __construct(private UserPasswordHasherInterface $passwordHasher) {}
+
     #[Route(name: 'app_admin_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
@@ -30,6 +33,15 @@ final class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $plainPassword = $form->get('plainPassword')->getData();
+
+            if ($plainPassword) {
+                $hashedPassword = $this->passwordHasher->hashPassword($user, $plainPassword);
+
+                $user->setPassword($hashedPassword);
+            }
+
             $entityManager->persist($user);
             $entityManager->flush();
 

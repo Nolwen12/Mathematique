@@ -10,7 +10,6 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Question</th>
                 <th>Contenue</th>
                 <th>Date</th>
                 <th>actions</th>
@@ -21,12 +20,11 @@
             <tr>
                 <td>{{ correction.id }}</td>
                 <td>{{ correction.name }}</td>
-                <td>{{ correction.question }}</td>
                 <td>{{ correction.contenue }}</td>
                 <td>{{ correction.date ? correction.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_correction_show', {'id': correction.id}) }}">show</a>
-                    <a href="{{ path('app_correction_edit', {'id': correction.id}) }}">edit</a>
+                    <a href="{{ path('app_correction_show', {'id': correction.id}) }}">Voir</a>
+                    <a href="{{ path('app_correction_edit', {'id': correction.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +35,8 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_correction_new') }}">Create new</a>
+    <a href="{{ path('app_correction_new') }}">Créer une nouvelle correction d'un exercice</a>
+     <a href="{{ path('app_admin_index') }}"> Voir les utilisateurs</a>
+    <a href="{{ path('app_chapitre_index') }}">Voir les chapitres</a>
+    <a href="{{ path('app_exercice_index') }}">Voir les exercices</a>
 {% endblock %}

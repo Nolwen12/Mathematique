@@ -17,16 +17,16 @@
             </tr>
             <tr>
                 <th>Sous_titre</th>
-                <td>{{ chapitre.sousTitre }}</td>
-            </tr>
-            <tr>
-                <th>Detail</th>
-                <td>{{ chapitre.detail }}</td>
+                <td><a href="{{ asset('uploads/Contenue/' ~ chapitre.Contenue) }}">Voir le chapitre</a></td>
             </tr>
             <tr>
                 <th>Date</th>
                 <td>{{ chapitre.date ? chapitre.date|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td>{{ chapitre.categorie.nom}}<td>
+            </tr> 
         </tbody>
     </table>
 

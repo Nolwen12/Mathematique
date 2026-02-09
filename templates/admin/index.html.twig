@@ -23,8 +23,8 @@
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>{{ user.password }}</td>
                 <td>
-                    <a href="{{ path('app_admin_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_admin_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_show', {'id': user.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_edit', {'id': user.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,8 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_new') }}">Create new</a>
+    <a href="{{ path('app_admin_new') }}">Créer un nouveau utilisateur</a>
+    <a href="{{ path('app_chapitre_index') }}">Voir les chapitres</a>
+    <a href="{{ path('app_exercice_index') }}">Voir les exercices</a>
+    <a href="{{ path('app_correction_index') }}">Voir les corrections</a>
 {% endblock %}

@@ -6,6 +6,8 @@ use App\Entity\Correction;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class CorrectionType extends AbstractType
 {
@@ -13,8 +15,18 @@ class CorrectionType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('question')
-            ->add('contenue')
+            ->add('contenue', FileType::class, [
+                'label' => 'Contenue (PDF file)',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new Assert\File(
+                        maxSize: '1024k',
+                        extensions: ['pdf', 'doc'],
+                        extensionsMessage: 'S il vous plaît télécharcher un PDF ou un document',
+                    )
+                ],
+            ])
             ->add('date')
         ;
     }

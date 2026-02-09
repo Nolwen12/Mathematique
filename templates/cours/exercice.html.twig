@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Chapitre{% endblock %}
 
 {% block body %}
 <style>
@@ -10,13 +10,8 @@
 
 <div class="example-wrapper">
     {% include 'header.html.twig' %}
-    <h1>Titre! ✅</h1>
-    <h3>Sous-Titre</h3>
-    <p> Description </p>
-    {% for niv in niveau %}
-        <ul>
-                <li><a href="{{ path('app_niveau_show', {'id' : niv.id})}}">{{niv.nom}}<a/></li>
-        </ul>
-    {% endfor %}
+    <h1> {{exercice.nom}} </h1>
+    <a href="{{ asset('uploads/Contenue/' ~ exercice.Contenue) }}">Voir l exercice</a>
+    <a href="{{path('app_cours_correction_show', {'id' : correction.id})}}">Voir la correction : {{correction.name}}</a>
 </div>
 {% endblock %}

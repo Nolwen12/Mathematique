@@ -10,9 +10,9 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
-                <th>Sous_titre</th>
-                <th>Detail</th>
+                <th>Contenue</th>
                 <th>Date</th>
+                <th>Catégorie</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,12 +21,12 @@
             <tr>
                 <td>{{ chapitre.id }}</td>
                 <td>{{ chapitre.title }}</td>
-                <td>{{ chapitre.sousTitre }}</td>
-                <td>{{ chapitre.detail }}</td>
+                <td>{{ chapitre.contenue }}</td>
                 <td>{{ chapitre.date ? chapitre.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ chapitre.categorie.nom}}<td>
                 <td>
-                    <a href="{{ path('app_chapitre_show', {'id': chapitre.id}) }}">show</a>
-                    <a href="{{ path('app_chapitre_edit', {'id': chapitre.id}) }}">edit</a>
+                    <a href="{{ path('app_chapitre_show', {'id': chapitre.id}) }}">Voir</a>
+                    <a href="{{ path('app_chapitre_edit', {'id': chapitre.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +37,8 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_chapitre_new') }}">Create new</a>
+    <a href="{{ path('app_chapitre_new') }}">Créer un nouveaux chapitre</a>
+    <a href="{{ path('app_admin_index') }}"> Voir les utilisateurs</a>
+    <a href="{{ path('app_exercice_index') }}">Voir les exercices</a>
+    <a href="{{ path('app_correction_index') }}">Voir les corrections</a>
 {% endblock %}

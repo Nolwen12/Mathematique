@@ -16,11 +16,18 @@ class Exercice
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $description = null;
-
     #[ORM\Column]
     private ?\DateTime $date = null;
+
+    #[ORM\ManyToOne(inversedBy: 'chapitre')]
+    private ?Chapitre $chapitre = null;
+
+    #[ORM\OneToOne(inversedBy: 'exercice', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Correction $correction = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Contenue = null;
 
     public function getId(): ?int
     {
@@ -39,18 +46,6 @@ class Exercice
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): static
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
     public function getDate(): ?\DateTime
     {
         return $this->date;
@@ -59,6 +54,42 @@ class Exercice
     public function setDate(\DateTime $date): static
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getChapitre(): ?Chapitre
+    {
+        return $this->chapitre;
+    }
+
+    public function setChapitre(?Chapitre $chapitre): static
+    {
+        $this->chapitre = $chapitre;
+
+        return $this;
+    }
+
+    public function getCorrection(): ?Correction
+    {
+        return $this->correction;
+    }
+
+    public function setCorrection(Correction $correction): static
+    {
+        $this->correction = $correction;
+
+        return $this;
+    }
+
+    public function getContenue(): ?string
+    {
+        return $this->Contenue;
+    }
+
+    public function setContenue(string $Contenue): static
+    {
+        $this->Contenue = $Contenue;
 
         return $this;
     }

@@ -16,12 +16,20 @@
                 <td>{{ exercice.nom }}</td>
             </tr>
             <tr>
-                <th>Description</th>
-                <td>{{ exercice.description }}</td>
+                <th>Contenue</th>
+                <td><a href="{{ asset('uploads/Contenue/' ~ exercice.Contenue) }}">Voir l exercice</a></td>
             </tr>
             <tr>
                 <th>Date</th>
                 <td>{{ exercice.date ? exercice.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Chapitre</th>
+                <td><a href="{{ asset('uploads/Contenue/' ~ exercice.chapitre.Contenue) }}">Voir le chapitre</a></td>
+            </tr>
+            <tr>
+                <th>Correction</th>
+                <td><a href="{{ asset('uploads/Contenue/' ~ exercice.correction.Contenue) }}">Voir la correction</td>
             </tr>
         </tbody>
     </table>

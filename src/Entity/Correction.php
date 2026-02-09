@@ -16,14 +16,14 @@ class Correction
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $question = null;
+    #[ORM\Column]
+    private ?\DateTime $date = null;
+
+    #[ORM\OneToOne(mappedBy: 'correction', cascade: ['persist', 'remove'])]
+    private ?Exercice $exercice = null;
 
     #[ORM\Column(length: 255)]
     private ?string $contenue = null;
-
-    #[ORM\Column]
-    private ?\DateTime $date = null;
 
     public function getId(): ?int
     {
@@ -38,18 +38,6 @@ class Correction
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getQuestion(): ?string
-    {
-        return $this->question;
-    }
-
-    public function setQuestion(string $question): static
-    {
-        $this->question = $question;
 
         return $this;
     }
@@ -74,6 +62,23 @@ class Correction
     public function setDate(\DateTime $date): static
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getExercice(): ?Exercice
+    {
+        return $this->exercice;
+    }
+
+    public function setExercice(Exercice $exercice): static
+    {
+        // set the owning side of the relation if necessary
+        if ($exercice->getCorrection() !== $this) {
+            $exercice->setCorrection($this);
+        }
+
+        $this->exercice = $exercice;
 
         return $this;
     }
