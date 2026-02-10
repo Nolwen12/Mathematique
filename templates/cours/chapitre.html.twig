@@ -9,7 +9,6 @@
 </style>
 
 <div class="example-wrapper">
-    {% include 'header.html.twig' %}
     <h1> {{chapitre.title}} </h1>
     <a href="{{ asset('uploads/Contenue/' ~ chapitre.Contenue) }}">Voir le chapitre</a>
     {% for ex in exercice%}

@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[Route('/admin')]
+#[IsGranted('ROLE_ADMIN')]
 final class AdminController extends AbstractController
 {
     public function __construct(private UserPasswordHasherInterface $passwordHasher) {}

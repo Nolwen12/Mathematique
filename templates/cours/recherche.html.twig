@@ -1,0 +1,12 @@
+<h1>Résultats pour "{{ critere }}"</h1>
+
+{% if recherche is empty %}
+    <p>Aucun chapitre trouvé.</p>
+{% else %}
+    {% for chapitre in recherche %}
+        <a href="{{ path('app_cours_chapitre_show', {'id': chapitre.id}) }}">
+            {{ chapitre.title }}
+        </a>
+        <br>
+    {% endfor %}
+{% endif %}

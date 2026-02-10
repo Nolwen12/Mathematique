@@ -26,6 +26,16 @@ class ChapitreRepository extends ServiceEntityRepository
             ->getResult();
       }
 
+      public function search(string $criteria)
+      {
+        return $this->createQueryBuilder('c')
+            ->where('c.title LIKE :keyword')
+            ->setParameter('keyword', '%' . $criteria . '%')
+            ->orderBy('c.title', 'ASC')
+            ->getQuery()
+            ->getResult();
+      }
+
     //    /**
     //     * @return Chapitre[] Returns an array of Chapitre objects
     //     */

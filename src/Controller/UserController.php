@@ -10,6 +10,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Entity\User;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
+#[IsGranted('ROLE_ADMIN')]
 final class UserController extends AbstractController
 {
     public function __construct(private UserPasswordHasherInterface $passwordHasher) {}

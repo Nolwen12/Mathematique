@@ -9,10 +9,9 @@
 </style>
 
 <div class="example-wrapper">
-    {% include 'header.html.twig' %}
-    <h1>Titre! ✅</h1>
-    <h3>Sous-Titre</h3>
-    <p> Description </p>
+    <h1>Bienvenue sur FunMath !</h1>
+    <h3>Si vous avez difficulté ou vous n'avez pas de cours, vous êtes au bon endroit !</h3>
+    <p> Sélection votre niveau et choissisez le chapitre que vous voulez apprendre ou rechercher le nom du chapitre dans la barre de recherch. </p>
     {% for niv in niveau %}
         <ul>
                 <li><a href="{{ path('app_niveau_show', {'id' : niv.id})}}">{{niv.nom}}<a/></li>

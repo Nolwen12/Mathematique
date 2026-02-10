@@ -9,7 +9,6 @@
 </style>
 
 <div class="example-wrapper">
-    {% include 'header.html.twig' %}
     <h1> {{exercice.nom}} </h1>
     <a href="{{ asset('uploads/Contenue/' ~ exercice.Contenue) }}">Voir l exercice</a>
     <a href="{{path('app_cours_correction_show', {'id' : correction.id})}}">Voir la correction : {{correction.name}}</a>

@@ -23,8 +23,10 @@
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>{{ user.password }}</td>
                 <td>
-                    <a href="{{ path('app_admin_show', {'id': user.id}) }}">Voir</a>
-                    <a href="{{ path('app_admin_edit', {'id': user.id}) }}">Modifier</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('app_admin_show', {'id': user.id}) }}">Voir</a>
+                        <a href="{{ path('app_admin_edit', {'id': user.id}) }}">Modifier</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
