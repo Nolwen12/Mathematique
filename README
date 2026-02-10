@@ -1,0 +1,134 @@
+README
+📌 Description
+Mathematique est une application web développée avec Symfony permettant la gestion de contenus pédagogiques en mathématiques.
+L'application permet d'organiser les contenus selon la structure suivante :
+Cours
+└── Niveau
+     └── Catégorie
+          └── Chapitre
+Un administrateur peut créer, modifier et supprimer des chapitres, catégories et cours, tandis que les utilisateurs peuvent consulter les contenus.
+
+🛠️ Technologies utilisées
+PHP 8+
+
+
+Symfony 6
+
+
+Doctrine ORM
+
+
+Twig
+
+
+Bootstrap 5
+
+
+MySQL
+
+
+Composer
+
+
+
+🗂️ Structure du projet
+src/Entity → Entités (Cours, Niveau, Catégorie, Chapitre…)
+
+
+src/Controller → Contrôleurs
+
+
+templates/ → Vues Twig
+
+
+migrations/ → Migrations Doctrine
+
+
+public/ → Fichiers publics
+
+
+
+⚙️ Installation
+1️⃣ Cloner le projet
+git clone git@github.com:Nolwen12/Mathematique.git
+cd Mathematique
+2️⃣ Installer les dépendances
+composer install
+3️⃣ Configurer l’environnement
+Modifier le fichier .env pour configurer la base de données :
+DATABASE_URL="mysql://user:password@127.0.0.1:3306/mathematique"
+4️⃣ Créer la base de données
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
+5️⃣ Lancer le serveur
+symfony server:start
+
+👤 Fonctionnalités principales
+🔹 Gestion des chapitres (Admin)
+Création d’un chapitre
+
+
+Association à une catégorie
+
+
+Persistance en base de données
+
+
+Accès restreint via rôle ROLE_ADMIN
+
+
+Exemple de relation Doctrine :
+#[ORM\ManyToOne(inversedBy: 'chapitres')]
+#[ORM\JoinColumn(nullable: false)]
+private ?Cours $cours = null;
+
+🎨 Interface
+L’interface utilise Bootstrap 5 pour :
+Mise en page responsive
+
+
+Formulaires stylisés
+
+
+Cartes et tableaux
+
+
+Navigation claire et moderne
+
+
+
+🔐 Sécurité
+Système d’authentification Symfony
+
+
+Gestion des rôles (ROLE_ADMIN)
+
+
+Protection des routes sensibles
+
+
+
+🚀 Améliorations possibles
+Ajout d’un système d’exercices
+
+
+Upload de documents PDF
+
+
+Tableau de bord administrateur
+
+
+Pagination des chapitres
+
+
+Filtres par niveau
+
+
+
+👩‍💻 Auteur
+Projet réalisé par Nolwen Fernandes
+ Dans le cadre d’un projet pédagogique.
+
+
+
+
